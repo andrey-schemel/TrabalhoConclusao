@@ -1,0 +1,19 @@
+﻿@model TCC.Models.Company
+    ViewBag.Title = "Nova Empresa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Company"))
+{
+
+    @Html.HiddenFor(c => c.Id)
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

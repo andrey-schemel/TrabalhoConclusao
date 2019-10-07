@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TCC.Models.Company>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empresa</h2>
+
+<p>
+    @Html.ActionLink("Nova Empresa", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (@Model.Any())
+{
+    <table id="empresa" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nome Empresa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var company in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(company.Name, "Details", new { company.Id})</td>
+                    <td>
+                        <p>
+                            @Html.ActionLink("Editar", "Edit", new { company.Id }, new { @class = "btn btn-primary" })
+                        </p>
+                    </td>
+                </tr>
+            }
+        </tbody>q
+    </table>
+}
+else
+{
+    <p>Não existem empresas cadastradas.</p>
+}
